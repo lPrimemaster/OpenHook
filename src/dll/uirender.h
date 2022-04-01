@@ -10,7 +10,7 @@
 
 namespace OpenHook
 {
-    void AttachPatcherThread(HMODULE hModule) noexcept;
+    void OPENHOOK_API AttachPatcherThread(HMODULE hModule) noexcept;
 }
 
 namespace OpenHook
