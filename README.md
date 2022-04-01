@@ -12,7 +12,7 @@ OpenHook taps into the execution of the running module instead of copying frame 
 ## Compilation
 To use the library, first clone the repository to your project directory with the recurse flag to download the git submodules as well.
 ```shell
-git clone --recurse-submodules <url>
+git clone --recurse-submodules git@github.com:lPrimemaster/OpenHook.git
 ```
 
 If you are using CMake to build your project, you can simply now add the subdirectory to your `CMakeLists.txt` file and link the lib (dynamic only for now).
