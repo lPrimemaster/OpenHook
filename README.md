@@ -35,37 +35,37 @@ class MyUiRenderer: public OpenHook::UIRenderer
 public:
     virtual void setup() override
     {
-	    // Init your UI stuff
-		
-		// You can get the win32 HDC here if needed
-		// using the protected member variable `context`
-		//
-		// This is the same HDC GDI is using
-		
-		// Example for getting the win32 window handle
-		HWND window = WindowFromDC(context);
-	    
-	    // Here you might want to change windows `CallWindowProc` 
-	    // via `SetWindowLongPtr` to handle events in your UI
+        // Init your UI stuff
+
+        // You can get the win32 HDC here if needed
+        // using the protected member variable `context`
+        //
+        // This is the same HDC GDI is using
+
+        // Example for getting the win32 window handle
+        HWND window = WindowFromDC(context);
+
+        // Here you might want to change windows `CallWindowProc` 
+        // via `SetWindowLongPtr` to handle events in your UI
     }
     virtual void render() override
     {
-	    // Do your rendering here
-		glDraw*();
-		OrUseAnotherLibToRender();
-		...
-		
-		// Rendering here is the same as natively doing something like
-		// glDraw*(); // injected app opengl render
-		// glDraw*(); // your render
-		// SwapBuffers();
+        // Do your rendering here
+        glDraw*();
+        OrUseAnotherLibToRender();
+        ...
+
+        // Rendering here is the same as natively doing something like
+        // glDraw*(); // injected app opengl render
+        // glDraw*(); // your render
+        // SwapBuffers();
     }
     virtual void destroy() override
     {
-	    // Do your cleanup here
-	    
-	    // Here you might want to change windows `CallWindowProc` 
-	    // via `SetWindowLongPtr` back to its original state
+        // Do your cleanup here
+
+        // Here you might want to change windows `CallWindowProc` 
+        // via `SetWindowLongPtr` back to its original state
     }
 };
 
