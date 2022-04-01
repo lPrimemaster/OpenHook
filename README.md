@@ -15,11 +15,11 @@ To use the library, first clone the repository to your project directory with th
 git clone --recurse-submodules git@github.com:lPrimemaster/OpenHook.git
 ```
 
-If you are using CMake to build your project, you can simply now add the subdirectory to your `CMakeLists.txt` file and link the lib (dynamic only for now).
+If you are using CMake to build your project, you can simply now add the subdirectory to your `CMakeLists.txt` file and link the lib (static only for now, even though the option for dynamic is in CMakeLists.txt).
 ```cmake
 # Add this before add_subdirectory if you wish to be able to use printf from your dll
 # This opens a new console 
-add_definitions(-DOPNEHOOK_DEBUG)
+set(OPENHOOK_DEBUG ON CACHE INTERNAL "" FORCE)
 
 add_subdirectory(OpenHook)
 add_library(your-target ...)
@@ -30,6 +30,10 @@ If not, compile the project and use the libraries generated using CMake and MSVC
 
 ## Example Usage
 ```cpp
+// Define this before any OpenHook headers
+#define OPENHOOK_STATIC
+#include "OpenHook/src/dll/uirender.h"
+
 class MyUiRenderer: public OpenHook::UIRenderer
 {
 public:
@@ -96,7 +100,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 ```
 
 ## Injecting your  dll
-The provided package also builds an executable target to  inject the dll from the command line in a simple fashion. Inside `bin/Release/` use
+The provided package also builds an executable target to inject the dll from the command line in a simple fashion. Inside `bin/Release/` use
 ```shell
 ./CMDInjector.exe ProcessNameToInject.exe YourDll.dll
 ```

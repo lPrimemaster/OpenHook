@@ -3,10 +3,12 @@
 
 #ifdef _EXPORT_SHARED
 #define OPENHOOK_API __declspec(dllexport)
-#elif _EXPORT_STATIC
+#else
+#ifdef OPENHOOK_STATIC
 #define OPENHOOK_API
 #else
 #define OPENHOOK_API __declspec(dllimport)
+#endif
 #endif
 
 namespace OpenHook
